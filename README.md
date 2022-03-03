@@ -15,7 +15,7 @@ Ideas and suggestions (feel free to use any or none):
 * Develop an architectural diagram of the app (e.g. box/line diagram(s) of the main pieces with supporting descriptions)
 * List out the various UX components needed along with their purpose/functionality and notable properties
 * Show the overall makeup of various screens - UX components, business logic, data store, notable supporting functionality/services, etc.
-* Create rough sample code for a screen 
+* Create rough sample code for a screen
 
 Please have the output in electronic form, creating it with whatever tools are easiest. Photos of drawings are perfectly OK! The goal is to communicate ideas, not to judge the vehicles they're contained in.
 
@@ -97,7 +97,7 @@ The summary screen is presented.
    * The test data (including the photo capture) is pushed to the cloud. Offline state is allowed, with the data being queued.
    * The user returns back to the hub/landing page, with the navigation stack reset
 
-# Misc: Titlebar
+## Misc: Titlebar
 * Back button (if navigation state allows)
 * App name (or patient name if entered)
 * File upload status (ready, uploading, offline)
@@ -108,15 +108,10 @@ The summary screen is presented.
    * End-user license agreement
 * The titlebar is not shown on certain screens (e.g. photo capture)
 
-# Architectural considerations
-* Allow for component re-use where practical
-* The effort to specify/build a screen is ideally relatively low. Consider something data-driven? But not required. 
-* Business logic should ideally live close to where each screen is specified
-* New tests and instructions can ideally be added fairly easily into the app
-
 # Potential starting points
-* What are the various UX components that could be created? What's their function and primary properties?
-* How are screens specified, and how do they utilize those components?
-* Where would various business logic live? What could a simple data model be?
-* How would screens be wired together in terms of navigation? How could business logic, such as form validation, affect this?
+* What are some of the various UX components that could be created? What's their function and primary properties?
+* How could screens be specified, and how do they utilize those components?
+* Where would various business logic live?
+* How would screens be wired together in terms of navigation?
 * How would data (e.g. tests) be locally stored?
+* Consider things such as component re-use and reducing duplicated code
