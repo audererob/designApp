@@ -3,6 +3,8 @@ This repo is intended to describe a fictional mobile app, and the ask of you is 
 
 The app, codenamed “Mercury”, will be used by volunteer health workers to help conduct and capture the results of various kinds of tests for infectious diseases. The app is expected to be deployed in various parts of the globe, with a focus on low- and middle-income countries.
 
+First and foremost, please try not to be overwhelmed by all of the screens and the overall app workflow! The intention of the exercise is to start to break down the problem into various pieces - it doesn't have to be perfect or complete, and there's no right answer. Some "hand-waving" is totally OK! In other words, this exercise isn't about details; it's about coming up with a high-level structure based on a very rough product spec.
+
 # The goal
 Design the basic architecture of the app, focusing on the front-end aspects, and describe it.
 
@@ -24,8 +26,6 @@ A user starts the app from their device's launcher...
 ![](figs/hub.png)
 
 The user sees a “home” or “landing” page that shows relevant information to them. The primary purpose of this screen is to show the user any in-progress tests, and allow them to start a new one. It is comprised of:
-* Any messaging from their “home base”, e.g. “Reminder: check your inventory and ask for more tests if needed!” (no need to worry about where this comes from - just consider the content dynamic and might be empty/null)
-* Any system warnings such as low disk space, the need to connect to the network due to pending uploads, etc.
 * A scrollable list of in-progress tests the user is conducting (if any)
    * Often it’s just one, but there may be multiple (e.g. testing multiple people in a household)
    * Shown in a “card” style
@@ -33,7 +33,10 @@ The user sees a “home” or “landing” page that shows relevant information
    * Selecting a test will navigate the user to the last screen they saw for that test
 * A command to start a new test
    * Choosing this will navigate the user to the "Patient registration" screen
-* Optional consideration: a command to show a history of tests they’ve performed in the past week
+* Optional consideration:
+  * Any messaging from their “home base”, e.g. “Reminder: check your inventory and ask for more tests if needed!” (no need to worry about where this comes from - just consider the content dynamic and might be empty/null)
+  * Any system warnings such as low disk space, the need to connect to the network due to pending uploads, etc.
+  * A command to show a history of tests they’ve performed in the past week
 
 ## Patient registration
 ![](figs/registration.png)
@@ -94,11 +97,7 @@ The summary screen is presented.
    * The test data (including the photo capture) is pushed to the cloud. Offline state is allowed, with the data being queued.
    * The user returns back to the hub/landing page, with the navigation stack reset
 
-# App “silhouette”
-Status bar
-* System-provided - clock, network, battery, etc.
-
-Titlebar
+# Misc: Titlebar
 * Back button (if navigation state allows)
 * App name (or patient name if entered)
 * File upload status (ready, uploading, offline)
@@ -108,12 +107,6 @@ Titlebar
    * About
    * End-user license agreement
 * The titlebar is not shown on certain screens (e.g. photo capture)
-
-Body
-* Content depends on the screen
-* Often there's scrollable content such as title text, body text, images, form controls, etc., but can sometimes be full-page such as the capture/camera UX
-* There's almost always some sort of navigation affordance - e.g. a "Continue" or "Submit" button, or card selection
-    * The navigation affordance triggers business logic (if any) and navigates to the destination screen
 
 # Architectural considerations
 * Allow for component re-use where practical
@@ -127,7 +120,3 @@ Body
 * Where would various business logic live? What could a simple data model be?
 * How would screens be wired together in terms of navigation? How could business logic, such as form validation, affect this?
 * How would data (e.g. tests) be locally stored?
-
-# Future design thoughts/considerations
-* What if we wanted to allow new types of tests dynamically? What could that look like?
-* Internationalization, accessibility, inclusivity
